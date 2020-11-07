@@ -67,6 +67,36 @@ module.exports = function (req, res, url) {
 			break;
 		}
 
+			case "/cc_browser": {
+			title = "Character Creator Browser";
+			attrs = {
+				data: process.env.SWF_URL + "/cc_browser.swf", // data: 'cc_browser.swf',
+				type: "application/x-shockwave-flash",
+				id: "char_creator",
+				width: "100%",
+				height: "100%",
+			};
+			params = {
+				flashvars: {
+					apiserver: "/",
+					storePath: process.env.STORE_URL + "/<store>",
+					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
+					themeId: "business",
+					ut: 60,
+					appCode: "go",
+					page: "",
+					siteId: "go",
+					m_mode: "school",
+					isLogin: "Y",
+					isEmbed: 1,
+					ctc: "go",
+					tlang: "en_US",
+				},
+				allowScriptAccess: "always",
+				movie: process.env.SWF_URL + "/cc_browser.swf", // 'http://localhost/cc_browser.swf'
+			};
+			break;
+		}
 		case "/go_full": {
 			let presave =
 				query.movieId && query.movieId.startsWith("m")
